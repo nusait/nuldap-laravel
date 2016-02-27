@@ -1,0 +1,23 @@
+{
+    "name": "nusait/nuldap-laravel",
+    "description": "",
+    "authors": [
+        {
+            "name": "Vahid Azam",
+            "email": "vahidazam@gmail.com"
+        }
+    ],
+    "require": {
+        "php": ">=5.3.0",
+        "nusait/nuldap": "^2.1",
+        "illuminate/contracts": "~5.1",
+        "illuminate/support": "~5.1",
+        "fzaninotto/faker": "^1.5"
+    },
+    "autoload": {
+        "psr-0": {
+            "Nusait\\Nuldap": "src/"
+        }
+    },
+    "minimum-stability": "dev"
+}
