@@ -11,12 +11,24 @@ Then update composer
 composer update
 ```
 
-## New Instance:
+## Laravel
+Add the service provider to `config/app.php`
 ```php
-$ldap = new Nusait\Nuldap\NuLdap($rdn, $password, $host, $port);
+Nusait\Nuldap\LdapServiceProvider::class,
 ```
-(all parameters are optional);
-if you do not put ```$rdn``` or ```$password```, you can still validate, but cannot ```searchNetid```. After instantiating, you can still set the rdn and password with ```setRdn``` and ```setPassword``` respectively.
+
+Publish the config:
+```
+php artisan vendor:publish --provider="Nusait\Nuldap\LdapServiceProvider" 
+```
+
+To use the fake Ldap, make sure to add to your `.env` file the line:
+```
+ldap_fake=true
+```
+
+## New Instance:
+`$ldap = \App::make('ldap')` or `$ldap = app('ldap')`
 
 ## Validate:
 ```php
