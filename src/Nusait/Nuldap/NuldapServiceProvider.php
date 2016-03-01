@@ -3,7 +3,7 @@
 use Faker\Generator as Faker;
 use Illuminate\Support\ServiceProvider;
 
-class LdapServiceProvider extends ServiceProvider
+class NuldapServiceProvider extends ServiceProvider
 {
 
     /**
@@ -30,7 +30,7 @@ class LdapServiceProvider extends ServiceProvider
     {
         $this->app->singleton('ldap', function ($app) {
             $config = $app['config']->get('ldap');
-            if ($this->app->environment('local', 'testing')) {
+            if ($config['fake']) {
                 $faker = \App::make(Faker::class);
 
                 return new NuldapFake($faker);
