@@ -42,7 +42,22 @@ class NuldapFake
             'employeenumber'  => [0 => $emplid],
             'nustudentnumber' => [0 => $emplid]
         ];
-        $user[$field] = $query;
+        if($field == 'email')
+        {
+            $user['mail'][0] = $query;
+        }
+        else if($field == 'netid')
+        {
+            $user['uid'][0] = $query;
+        }
+        else if($field == 'emplid')
+        {
+            $user['employeenumber'][0] = $query;
+        }
+        else if($field == 'studentid')
+        {
+            $user['nustudentnumber'][0] = $query;
+        }
 
         return $user;
     }
