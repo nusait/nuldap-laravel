@@ -23,6 +23,10 @@ class NuldapFake
 
     public function search($field, $query)
     {
+        if($query == 'notfound')
+        {
+            return null;
+        }
         $firstName = $this->faker->firstName;
         $lastName = $this->faker->lastName;
         $emplid = $this->faker->numerify('#######');
