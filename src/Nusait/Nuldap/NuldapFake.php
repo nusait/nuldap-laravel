@@ -28,15 +28,15 @@ class NuldapFake
         $emplid = $this->faker->numerify('#######');
         $jobTitles = $this->getJobTitles();
         $user = [
-            'netid'       => $this->faker->bothify('???###'),
-            'phone'       => $this->faker->numerify('555-###-####'),
-            'email'       => "{$firstName}.{$lastName}@example.com",
-            'title'       => $jobTitles->random(),
-            'first_name'  => $firstName,
-            'last_name'   => $lastName,
-            'displayname' => "{$firstName} {$lastName}",
-            'emplid'      => $emplid,
-            'studentid'   => $emplid
+            'uid'             => [0 => $this->faker->bothify('???###')],
+            'telephonenumber' => [0 => $this->faker->numerify('555-###-####')],
+            'mail'            => [0 => "{$firstName}.{$lastName}@example.com"],
+            'title'           => [0 => $jobTitles->random()],
+            'givenname'       => [0 => $firstName],
+            'sn'              => [0 => $lastName],
+            'displayname'     => [0 => "{$firstName} {$lastName}"],
+            'employeenumber'  => [0 => $emplid],
+            'nustudentnumber' => [0 => $emplid]
         ];
         $user[$field] = $query;
 
