@@ -28,7 +28,7 @@ class NuldapServiceProvider extends ServiceProvider
      */
     public function register()
     {
-        $this->app->singleton('ldap', function ($app) {
+        $this->app->singleton('Nusait\Nuldap\Contracts\LdapInterface', function ($app) {
             $config = $app['config']->get('ldap');
             if ($config['fake']) {
                 $faker = \App::make(Faker::class);
@@ -39,7 +39,8 @@ class NuldapServiceProvider extends ServiceProvider
             return new NuLdap($config['rdn'], $config['password'], $config['host'], $config['port']);
         });
 
-        $this->app->alias('ldap', 'Nusait\Nuldap\NuLdap');
+        $this->app->alias('ldap', 'Nusait\Nuldap\Contracts\LdapInterface');
+        $this->app->alias('nuldap', 'Nusait\Nuldap\Contracts\LdapInterface');
     }
 
     /**
@@ -49,6 +50,6 @@ class NuldapServiceProvider extends ServiceProvider
      */
     public function provides()
     {
-        return ['ldap', 'Nusait\Nuldap\NuLdap'];
+        return ['ldap', 'nuldap', 'Nusait\Nuldap\Contracts\LdapInterface'];
     }
 }

@@ -2,10 +2,17 @@
 
 use Faker\Generator as Faker;
 use Illuminate\Support\Collection;
+use Nusait\Nuldap\Contracts\LdapInterface;
 use Nusait\Nuldap\Contracts\TransformerInterface;
 use Nusait\Nuldap\Transformers\DefaultUserTransformer;
 
-class NuldapFake
+/**
+ * @method array searchNetid($netid) Searches for a user by netid.
+ * @method array searchEmplid($emplid) Searches for a user by emplid.
+ * @method array searchEmail($email) Searches for a user by email.
+ * @method array searchStudentid($studentid) Searches for a user by student id.
+ */
+class NuldapFake implements LdapInterface
 {
     protected $faker;
 
@@ -23,8 +30,12 @@ class NuldapFake
 
     public function search($field, $query)
     {
-        if($query == 'notfound')
-        {
+        /*
+         * If the query begins wih nf- then return a null user
+         * This emulates not finding a user
+         */
+        $notFoundRegex = '/^nf-(\w+)/';
+        if (preg_match($notFoundRegex, $query, $matches)) {
             return null;
         }
         $firstName = $this->faker->firstName;
@@ -76,7 +87,7 @@ class NuldapFake
 
     public function __call($name, $arguments)
     {
-        $regex = '/^search(.+)/';
+        $regex = '/^search(\w+)/';
         if (preg_match($regex, $name, $matches)) {
             $field = strtolower(trim($matches[1]));
             if ( ! isset($arguments[0])) {
