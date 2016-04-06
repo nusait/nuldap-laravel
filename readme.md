@@ -3,7 +3,7 @@ This is a LDAP package meant for Northwestern University. (But can be extended f
 
 ## Installation via Composer
 ```
-composer require nusait/nuldap
+composer require nusait/nuldap-laravel
 ```
 
 Then update composer
