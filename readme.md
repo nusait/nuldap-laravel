@@ -14,12 +14,12 @@ composer update
 ## Laravel
 Add the service provider to `config/app.php`
 ```php
-Nusait\Nuldap\LdapServiceProvider::class,
+Nusait\Nuldap\NuldapServiceProvider::class,
 ```
 
 Publish the config:
 ```
-php artisan vendor:publish --provider="Nusait\Nuldap\LdapServiceProvider" 
+php artisan vendor:publish --provider="Nusait\Nuldap\NuldapServiceProvider" 
 ```
 
 To use the fake Ldap, make sure to add to your `.env` file the line:
