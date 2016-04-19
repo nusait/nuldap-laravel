@@ -39,8 +39,8 @@ class NuldapServiceProvider extends ServiceProvider
             return new NuLdap($config['rdn'], $config['password'], $config['host'], $config['port']);
         });
 
-        $this->app->alias('ldap', 'Nusait\Nuldap\Contracts\LdapInterface');
-        $this->app->alias('nuldap', 'Nusait\Nuldap\Contracts\LdapInterface');
+        $this->app->alias('Nusait\Nuldap\Contracts\LdapInterface', 'ldap');
+        $this->app->alias('Nusait\Nuldap\Contracts\LdapInterface', 'nuldap');
     }
 
     /**
