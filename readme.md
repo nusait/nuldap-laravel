@@ -27,7 +27,7 @@ To use the fake Ldap, make sure to add to your `.env` file the line:
 ldap_fake=true
 ```
 
-When using NuldapFake, any search will return a user with pre-filled data using Faker. Whatever search term you provide for a field will return as the value for that field, i.e. a `searchNetid('asdf')` will return a user with `['netid'] = 'asdf'`. In order to simulate not finding a user, set the query to `notfound`, i.e. `searchNetid('notfound')` and it will not find that user.
+When using NuldapFake, any search will return a user with pre-filled data using Faker. Whatever search term you provide for a field will return as the value for that field, i.e. a `searchNetid('asdf')` will return a user with `['netid'] = 'asdf'`. In order to simulate not finding a user, prepend the query with `nf-`, i.e. `searchNetid('nf-blah')` and it will not find that user.
 
 ## New Instance:
 `$ldap = \App::make('ldap')` or `$ldap = app('ldap')`
