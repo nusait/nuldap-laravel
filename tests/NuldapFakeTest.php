@@ -58,7 +58,8 @@ class NuldapFakeTest extends PHPUnit_Framework_TestCase
             "sn",
             "displayname",
             "employeenumber",
-            "nustudentnumber"
+            "nustudentnumber",
+            "jpegphoto"
         ];
         $this->assertEquals($keys, array_keys($user));
     }
